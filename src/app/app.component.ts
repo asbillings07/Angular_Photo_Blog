@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
+// component decorator
 @Component({
   selector: 'app-root',
-  template: '<h2>Hello World!</h2>',
-  styles: [
-    `
-      h2 {
-        font-family: san-serif;
-        font-size: 1.2em;
-      }
-    `,
-  ], // will insert out component into the root of our place holder element
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
 })
-export class AppComponent {}
+export class AppComponent {
+  emoji = ['😀 ', ' 🤩 ', ' 🤔 ', ' 😎 '];
+  activeEmoji: string;
+  changeEmoji() {
+      this.activeEmoji = this.emoji[Math.floor(Math.random() * this.emoji.length)]
+  }
+}
