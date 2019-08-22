@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { EntryListComponent, EntryComponent } from './entries';
+import { EntryListComponent, EntryComponent, EntryService } from './entries';
+import { InMemoryEntryService } from './backend';
 
 /**
  * Component = Template + Class + Decorator
@@ -16,7 +18,12 @@ import { EntryListComponent, EntryComponent } from './entries';
 
 // Where we import all our Components
 @NgModule({
-  imports: [BrowserModule, HttpModule],
+  imports: [
+    BrowserModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryEntryService),
+  ],
+  providers: [EntryService],
   declarations: [AppComponent, EntryComponent, EntryListComponent], // tells angular to start the AppComponent at launch
   bootstrap: [AppComponent],
 }) // will pack this module when it ships
