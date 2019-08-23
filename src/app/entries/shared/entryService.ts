@@ -6,6 +6,12 @@ import { Entry } from './entry.model';
 export class EntryService {
   constructor(private http: Http) {}
 
+  addComment(entryid: number, comment: { name: string; comment: string }) {
+    return this.http
+      .post(`/app/entries/${entryid}/comments`, comment)
+      .toPromise();
+  }
+
   getEntries(): Promise<Entry[]> {
     // generic promise
     return this.http

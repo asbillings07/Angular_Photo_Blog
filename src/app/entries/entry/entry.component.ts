@@ -10,4 +10,8 @@ import { Component, Input } from '@angular/core';
 export class EntryComponent {
   // applied input decorator so it an recieve data from the entry list
   @Input() entry: Entry;
+
+  onCommentAdded(comment: { name: string; comment: string }) {
+    this.entry.comments.push(comment);
+  }
 }
